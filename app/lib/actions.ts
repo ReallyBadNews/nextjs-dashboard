@@ -32,7 +32,7 @@ export type State = {
 
 export async function createInvoice(
   prevState: State,
-  formData: FormData
+  formData: FormData,
   // TODO: This return type isn't in the docs, but needed to fix typescript error
 ): Promise<State> {
   // Validate form using Zod
@@ -78,7 +78,7 @@ export async function createInvoice(
 export async function updateInvoice(
   id: string,
   prevState: State,
-  formData: FormData
+  formData: FormData,
 ): Promise<State> {
   const validatedFields = UpdateInvoice.safeParse({
     customerId: formData.get("customerId"),
@@ -128,7 +128,7 @@ export async function deleteInvoice(id: string) {
 
 export async function authenticate(
   prevState: string | undefined,
-  formData: FormData
+  formData: FormData,
 ) {
   try {
     await signIn("credentials", Object.fromEntries(formData));

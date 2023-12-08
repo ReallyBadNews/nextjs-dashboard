@@ -10,7 +10,7 @@ export const authConfig = {
       const isLoggedIn = !!auth?.user;
       const protectedPaths = ["/dashboard", "/customers", "/invoices"];
       const isProtectedPath = protectedPaths.some((path) =>
-        nextUrl.pathname.startsWith(path)
+        nextUrl.pathname.startsWith(path),
       );
       if (isProtectedPath) {
         if (isLoggedIn) return true;
