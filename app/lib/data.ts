@@ -2,7 +2,7 @@ import { sql } from "@vercel/postgres";
 import { unstable_noStore as noStore } from "next/cache";
 import {
   CustomerField,
-  CustomersTable,
+  CustomersTableType,
   InvoiceForm,
   InvoicesTable,
   LatestInvoiceRaw,
@@ -90,7 +90,7 @@ export async function fetchCardData() {
 const ITEMS_PER_PAGE = 6;
 export async function fetchFilteredInvoices(
   query: string,
-  currentPage: number
+  currentPage: number,
 ) {
   noStore();
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -198,7 +198,7 @@ export async function fetchFilteredCustomers(query: string) {
   noStore();
 
   try {
-    const data = await sql<CustomersTable>`
+    const data = await sql<CustomersTableType>`
 		SELECT
 		  customers.id,
 		  customers.name,
