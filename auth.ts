@@ -7,6 +7,7 @@ import { getUser } from "@/app/lib/data";
 
 export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
+  session: { strategy: "jwt" },
   providers: [
     Credentials({
       async authorize(credentials) {

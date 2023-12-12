@@ -167,12 +167,8 @@ export async function register(
 
   console.log("[register] validatedFields:", validatedFields);
   if (!validatedFields.success) {
-    console.log("[register]", validatedFields.error.flatten());
+    console.log("[register]", validatedFields.error.flatten().fieldErrors);
     return "Missing Fields. Failed to Register.";
-    // return {
-    //   errors: validatedFields.error.flatten().fieldErrors,
-    //   message: "Missing Fields. Failed to Register.",
-    // };
   }
 
   const { email, password, name } = validatedFields.data;
