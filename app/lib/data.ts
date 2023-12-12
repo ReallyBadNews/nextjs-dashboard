@@ -229,12 +229,12 @@ export async function fetchFilteredCustomers(query: string) {
   }
 }
 
-export async function getUser(email: string) {
+export async function getUser(email: string): Promise<User | undefined> {
   noStore();
 
   try {
-    const user = await sql`SELECT * from USERS where email=${email}`;
-    return user.rows[0] as User;
+    const user = await sql<User>`SELECT * from USERS where email=${email}`;
+    return user.rows[0];
   } catch (error) {
     console.error("Failed to fetch user:", error);
     throw new Error("Failed to fetch user.");
