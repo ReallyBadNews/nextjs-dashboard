@@ -25,14 +25,14 @@ export const authConfig = {
       return true;
     },
     async jwt({ token, user, account, profile, isNewUser }) {
-      console.log("[jwt]:", { token, user, account, profile, isNewUser });
+      // console.log("[jwt]:", { token, user, account, profile, isNewUser });
       if (user) {
         token.id = user.id;
       }
       return token;
     },
     session({ session, token, newSession, trigger, user }) {
-      console.log("[session]:", { session, token, newSession, trigger, user });
+      // console.log("[session]:", { session, token, newSession, trigger, user });
       if (token) {
         // session.user.id = token.id;
       }
